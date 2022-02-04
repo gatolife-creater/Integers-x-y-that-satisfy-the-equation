@@ -10,50 +10,31 @@ window.addEventListener("load", function() {
 const random = (min, max) => Math.floor(Math.random() * (max + 1 - min)) + min;
 
 
-
-
 function setSmallNum(n) {
     // !n --> nが0もしくは宣言されていない
-    while (!n) {
-        n = random(-2, 2) | 0;
-    }
+    while (!n) n = random(-2, 2) | 0;
     return n;
 }
 
 function setMiddleNum(n) {
-    while (!n) {
-        n = random(-9, 9) | 0;
-    }
+    while (!n) n = random(-9, 9) | 0;
     return n;
 }
 
 function setLargeNum(n) {
-    while (!n) {
-        n = random(-50, 50) | 0;
-    }
+    while (!n) n = random(-50, 50) | 0;
     return n;
 }
 
 function toEquation(a, b, c, d, e) {
-
     // a
     a = (a + "").replace("1", "");
     // b
-    if (b > 0) {
-        b = ("+" + b).replace("1", "");
-    } else {
-        b = (b + "").replace("1", "");
-    }
+    (b > 0) ? b = ("+" + b).replace("1", ""): b = (b + "").replace("1", "");
     // c
-    if (c > 0) {
-        c = ("+" + c).replace("1", "");
-    } else {
-        c = (c + "").replace("1", "");
-    }
+    (c > 0) ? c = ("+" + c).replace("1", ""): c = (c + "").replace("1", "");
     // d
-    if (d > 0) {
-        d = "+" + d;
-    }
+    if (d > 0) d = "+" + d;
     // e
     e = e + "";
 
@@ -62,15 +43,14 @@ function toEquation(a, b, c, d, e) {
 }
 
 function solveAnEquation(a, b, c, d, e) {
+    // 計算をする際に、dは右辺に移行することになるので、最大の値は必ず
     let max = e - d;
     let answer = [];
     for (let x = -max; x <= max; x++) {
         if (x == 0) continue;
         for (let y = -max; y <= max; y++) {
             if (y == 0) continue
-            if ((a * x * y) + (b * x) + (c * y) == e - d) {
-                answer.push([x, y]);
-            }
+            if ((a * x * y) + (b * x) + (c * y) == e - d) answer.push([x, y]);
         }
     }
     return answer;
@@ -83,11 +63,8 @@ function main() {
     c = setMiddleNum(c);
     d = setLargeNum(d);
     e = setLargeNum(e);
-    if (a % 2 == 0 && b % 2 == 1) {
-        main();
-    }
+    if (a % 2 == 0 && b % 2 == 1) main();
     let answer = solveAnEquation(a, b, c, d, e);
-
 
     console.log(answer);
     let number = document.getElementsByTagName("summary")[0];
