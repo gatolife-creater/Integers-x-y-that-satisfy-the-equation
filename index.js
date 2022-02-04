@@ -44,7 +44,7 @@ function toEquation(a, b, c, d, e) {
 
 function solveAnEquation(a, b, c, d, e) {
     // 計算をする際に、dは右辺に移行することになるので、最大の値は必ず
-    let max = e - d;
+    let max = 5000;
     let answer = [];
     for (let x = -max; x <= max; x++) {
         if (x == 0) continue;
