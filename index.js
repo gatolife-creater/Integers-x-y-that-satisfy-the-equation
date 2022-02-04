@@ -1,12 +1,4 @@
 let reload_button;
-let dark_mode_switch;
-let dark_mode_flag;
-
-if (localStorage.getItem("dark_mode_info")) {
-    dark_mode_flag = localStorage.getItem("dark_mode_info");
-} else if (!localStorage.getItem("dark_mode_info")) {
-    dark_mode_flag = false;
-}
 
 window.addEventListener("load", function() {
     main();
@@ -14,21 +6,6 @@ window.addEventListener("load", function() {
     reload_button.addEventListener("click", function() {
         location.reload();
     });
-    dark_mode_switch = document.getElementsByClassName("switchArea")[0];
-    dark_mode_switch.onchange = function() {
-        if (dark_mode_flag) {
-            dark_mode_flag = false;
-            localStorage.setItem("dark_mode_info", dark_mode_flag);
-            document.getElementsByTagName("body")[0].style = "background-color:white;color:black;";
-            dark_mode_switch.style = "background-color:white;";
-        } else if (!dark_mode_flag) {
-            dark_mode_flag = true;
-            localStorage.setItem("dark_mode_info", dark_mode_flag);
-            document.getElementsByTagName("body")[0].style = "background-color:black;color:#ccc;";
-            dark_mode_switch.style = "background-color:black;";
-        }
-    };
-
 });
 
 
