@@ -47,9 +47,7 @@ function solveAnEquation(a, b, c, d, e) {
     let max = 5000;
     let answer = [];
     for (let x = -max; x <= max; x++) {
-        if (x == 0) continue;
         for (let y = -max; y <= max; y++) {
-            if (y == 0) continue
             if ((a * x * y) + (b * x) + (c * y) == e - d) answer.push([x, y]);
         }
     }
