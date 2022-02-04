@@ -1,11 +1,27 @@
 let reload_button;
+let dark_mode_switch;
+let dark_mode_flag = false;
 window.addEventListener("load", function() {
     main();
     reload_button = document.getElementById("reload_button");
     reload_button.addEventListener("click", function() {
         location.reload();
     });
+    dark_mode_switch = document.getElementsByClassName("switchArea")[0];
+    dark_mode_switch.onchange = function() {
+        if (dark_mode_flag) {
+            dark_mode_flag = false;
+            document.getElementsByTagName("body")[0].style = "background-color:white;color:black;";
+            dark_mode_switch.style = "background-color:white;";
+        } else if (!dark_mode_flag) {
+            dark_mode_flag = true;
+            document.getElementsByTagName("body")[0].style = "background-color:black;color:gray;";
+            dark_mode_switch.style = "background-color:black;";
+        }
+    };
+
 });
+
 
 const random = (min, max) => Math.floor(Math.random() * (max + 1 - min)) + min;
 
