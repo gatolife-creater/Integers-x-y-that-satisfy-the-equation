@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
             dark_mode_switch.style = "background-color:white;";
         } else if (!dark_mode_flag) {
             dark_mode_flag = true;
-            document.getElementsByTagName("body")[0].style = "background-color:black;color:gray;";
+            document.getElementsByTagName("body")[0].style = "background-color:black;color:#ccc;";
             dark_mode_switch.style = "background-color:black;";
         }
     };
