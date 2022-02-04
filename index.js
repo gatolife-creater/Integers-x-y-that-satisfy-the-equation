@@ -29,7 +29,7 @@ function setMiddleNum(n) {
 
 function setLargeNum(n) {
     while (!n) {
-        n = random(-50, 50) | 0;
+        n = random(-5000, 5000) | 0;
     }
     return n;
 }
