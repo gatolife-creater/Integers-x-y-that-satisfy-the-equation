@@ -8,7 +8,6 @@ window.addEventListener("load", function() {
     });
 });
 
-
 const random = (min, max) => Math.floor(Math.random() * (max + 1 - min)) + min;
 
 
@@ -45,7 +44,7 @@ function toEquation(a, b, c, d, e) {
 }
 
 function solveAnEquation(a, b, c, d, e) {
-    // 計算をする際に、dは右辺に移行することになるので、最大の値は必ず
+    // 数学的に繰り返す回数を決めるのが面倒だったので、とりあえず 10000x10000通りを試すことにした
     let max = 5000;
     let answer = [];
     for (let x = -max; x <= max; x++) {
@@ -57,25 +56,19 @@ function solveAnEquation(a, b, c, d, e) {
 }
 
 function main() {
+    // a --> xy, b --> x, c --> y, d --> 文字なし, e -->文字なし 
     let a, b, c, d, e;
-    a = setSmallNum(a);
-    b = setMiddleNum(b);
-    c = setMiddleNum(c);
-    d = setLargeNum(d);
-    e = setLargeNum(e);
+    a = setSmallNum(a), b = setMiddleNum(b), c = setMiddleNum(c), d = setLargeNum(d), e = setLargeNum(e);
     if (a % 2 == 0 && b % 2 == 1) main();
     let answer = solveAnEquation(a, b, c, d, e);
-
-    console.log(answer);
     let number = document.getElementsByTagName("summary")[0];
-    number.innerText = `答えを見る:${answer.length}個`;
+    number.innerText = `答えを見る： ${answer.length} 個`;
 
     // 答えの一覧を表示
     let answer_elem = document.getElementById("answer");
     for (let i = 0; i < answer.length; i++) {
         let new_elem = document.createElement("div");
-        console.log(answer[i]);
-        new_elem.innerText = `(${answer[i]})`;
+        new_elem.innerText = `( ${answer[i]} )`;
         answer_elem.appendChild(new_elem);
     }
     let equation = toEquation(a, b, c, d, e);
