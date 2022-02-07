@@ -44,8 +44,8 @@ function toEquation(a, b, c, d, e) {
 }
 
 function solveAnEquation(a, b, c, d, e) {
-    // 数学的に繰り返す回数を決めるのが面倒だったので、とりあえず 10000x10000通りを試すことにした
-    let max = 5000;
+    // 数学的に繰り返す回数を決めるのが面倒だったので、とりあえず 2000x2000通りを試すことにした
+    let max = 1000;
     let answer = [];
     for (let x = -max; x <= max; x++) {
         for (let y = -max; y <= max; y++) {
